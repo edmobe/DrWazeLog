@@ -1,0 +1,48 @@
+.parent{
+	-fx-background-color: #ffffff;
+}
+.sidebar{
+	-fx-background-color: #E4E2E4;
+}
+.top{
+	-fx-background-color: #E4E2E4;
+}
+.close-btn{
+	-fx-background-color: #FC5653;
+	-fx-background-radius: 100%;
+}
+.close-btn{
+	-fx-background-color: red;
+	-fx-background-radius: 100%;
+}
+.min-btn{
+	-fx-background-color: #29CC41;
+	-fx-background-radius: 100%;
+}
+.min-btn{
+	-fx-background-color: green;
+	-fx-background-radius: 100%;
+}
+.max-btn{
+	-fx-background-color: #FDBC40;
+	-fx-background-radius: 100%;
+}
+.max-btn{
+	-fx-background-color: yellow;
+	-fx-background-radius: 100%;
+}
+.profile{
+	-fx-background-color: transparent;
+	-fx-border-color: #E4E2E4;
+	-fx-border-style: solid;
+}
+.message-box{
+	-fx-background-color: #E4E2E4;
+	-fx-background-radius: 10px;
+}
+.board{
+	-fx-background-color: transparent;
+	-fx-border-color: #E4E2E4;
+	-fx-border-style: solid;
+	
+}
