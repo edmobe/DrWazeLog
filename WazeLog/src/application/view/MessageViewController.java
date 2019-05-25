@@ -1,6 +1,10 @@
 package application.view;
 
+
+
 import javafx.fxml.FXML;
+import structure.FactoryUser;
+import structure.FactoryWazeLog;
 
 public class MessageViewController implements javafx.fxml.Initializable {
 	
@@ -10,45 +14,38 @@ public class MessageViewController implements javafx.fxml.Initializable {
 	@FXML
 	 private javafx.scene.control.TextField textBubble;
 	
-	//Panel del WazeLog
 	@FXML
-	 private javafx.scene.layout.AnchorPane paneWazeLog;
-	
-	//Imagen del WazeLog
+	private javafx.scene.layout.VBox messageVBox;
+		
 	@FXML
-	 private javafx.scene.layout.AnchorPane imageWazeLog;
+	private javafx.scene.control.ScrollPane scroll;
 	
-	//vBox del WazeLog
-	@FXML
-	 private javafx.scene.layout.AnchorPane vBoxWazeLog;
-	
-	//Texto del WazeLog
-	@FXML
-	 private javafx.scene.layout.AnchorPane wazeLogText;
-	
-	//Panel del Usuario
-	@FXML
-	 private javafx.scene.layout.AnchorPane paneUser;
-	
-	//vBox del usuario
-	@FXML
-	 private javafx.scene.layout.AnchorPane vBoxUser;
-	
-	//Texto del usuario
-	@FXML
-	 private javafx.scene.layout.AnchorPane userText;
-	
+			
 	@Override
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
 	}
 	
+		
 	@FXML
 	private void sendText() {
-	       if(textBubble.getText().trim().equals(""))return;
-	       System.out.println(textBubble.getText().trim());
-	       textBubble.setText("Type your message here");
-	       textBubble.requestFocus();
+	       if(textBubble.getText().trim().equals("") || textBubble.getText().trim().equals("Type your message here")) {
+	    	   textBubble.setText("Type your message here");
+	    	   textBubble.requestFocus();
+	       }
+	       else {
+	    	   
+	    	   structure.FactoryUser newMessageUser = new FactoryUser();
+	    	   structure.FactoryWazeLog newMessageWazeLog = new FactoryWazeLog();
+	    	   messageVBox.getChildren().addAll(newMessageUser.cretaMessage(textBubble.getText().trim()));
+	    	   messageVBox.getChildren().addAll(newMessageWazeLog.cretaMessage(textBubble.getText().trim()));
+	    	   
+	    	   System.out.println(textBubble.getText().trim());
+		       textBubble.setText("");
+		       textBubble.requestFocus(); 
+		       
+	       }
+	       
 		 
     }
 	
