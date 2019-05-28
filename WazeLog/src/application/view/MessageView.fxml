@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" styleClass="parent" stylesheets="@MessageView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MessageViewController">
+   <children>
+      <Pane prefHeight="36.0" prefWidth="800.0" styleClass="sidebar">
+         <children>
+            <Label layoutX="7.0" layoutY="9.0" prefHeight="15.0" prefWidth="15.0" styleClass="close-btn" />
+            <Label layoutX="29.0" layoutY="9.0" prefHeight="15.0" prefWidth="15.0" styleClass="max-btn" />
+            <Label layoutX="53.0" layoutY="9.0" prefHeight="15.0" prefWidth="15.0" styleClass="min-btn" />
+            <Label layoutX="383.0" layoutY="2.0" text="WazeLog">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox fx:id="messageVBoxScroll" layoutY="32.0" prefHeight="668.0" prefWidth="56.0" style="-fx-background-color: #6AE174;" />
+      <VBox layoutX="56.0" layoutY="31.0" prefHeight="94.0" prefWidth="750.0" styleClass="profile">
+         <children>
+            <Pane prefHeight="200.0">
+               <children>
+                  <Label layoutX="10.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="10.0" style="-fx-background-color: #29CC41; -fx-background-radius: 100;" />
+                  <ImageView fitHeight="73.0" fitWidth="65.0" layoutX="37.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/WAZELOG.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="102.0" layoutY="14.0" text="WazeLog">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="102.0" layoutY="38.0" text="The best roud" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <VBox layoutX="56.0" layoutY="604.0" prefHeight="94.0" prefWidth="750.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Pane prefHeight="205.0" styleClass="profile">
+               <children>
+                  <ImageView id="messageBotton" fitHeight="50.0" fitWidth="50.0" layoutX="657.0" layoutY="23.0" onMouseClicked="#sendText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/iconeNVIAR.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="textBubble" accessibleRole="PARENT" layoutX="14.0" layoutY="24.0" prefHeight="46.0" prefWidth="518.0" styleClass="message-box" text="Type your message here">
+                     <font>
+                        <Font name="Calibri Light" size="14.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="583.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <ScrollPane fx:id="scroll" hvalue="1.0" layoutX="56.0" layoutY="126.0" prefHeight="479.0" prefWidth="748.0" style="-fx-background-color: #ffffff;" vvalue="1.0">
+         <content>
+            <VBox id="texTable" fx:id="messageVBox" fillWidth="false" prefWidth="743.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Pane id="paneWazeLog" maxHeight="100.0" prefHeight="100.0" prefWidth="701.0">
+                     <children>
+                        <ImageView id="imageWazeLog" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../res/WAZELOG.png" />
+                           </image>
+                        </ImageView>
+                        <VBox id="vBoxWazeLog" alignment="CENTER_LEFT" layoutX="75.0" prefHeight="100.0">
+                           <children>
+                              <Label id="wazeLogText" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 10px;" text="Bienvenido a WazeLog la mejor lógica de llegar a su destino. Por Favor indíqueme donde se encuentra.">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Pane id="paneUser" layoutX="10.0" layoutY="104.0" maxHeight="100.0">
+                     <children>
+                        <VBox id="vBoxUser" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="750.0">
+                           <children>
+                              <Label id="userText" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 10px;" text="Hola WazeLog estoy en Cartago." textFill="#40b24b">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets right="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
