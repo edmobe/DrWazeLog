@@ -78,26 +78,15 @@ public class ConnectionDestination {
 				
 				
 				if (dirrections.getLenght() >= 0) {
-					
-					java.lang.Boolean confir = true;
-					java.lang.Boolean confir2 = true;
 					java.lang.String temporal= null;
 					
 					for (java.lang.String pane: dirrections.getInterplace()) {
-						if (confir) {
+						
 							t5 = "mejorcamino(["+ dirrections.getOrigin()+"], ["+pane+"], P, W)";
 							Query q9 = new Query(t5);
 							interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q9.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q9.oneSolution().get("P").toString()) + "Km";
-							confir = false;
 							temporal = pane;
-						}
-						else if (confir2) {
-							t5 = "mejorcamino(["+ temporal+"], ["+pane+"], P, W)";
-							Query q10 = new Query(t5);
-							interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q10.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q10.oneSolution().get("P").toString()) + "Km";
-							confir2 = false;
-							temporal = pane;
-						}
+								
 					}
 					t5 = "mejorcamino(["+ temporal+"], ["+dirrections.getDestination()+"], P, W)";
 					Query q11 = new Query(t5);

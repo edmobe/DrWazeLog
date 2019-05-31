@@ -80,7 +80,7 @@
                <children>
                   <Pane id="paneWazeLog" maxHeight="200.0" prefWidth="701.0">
                      <children>
-                        <ImageView id="imageWazeLog" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="imageWazeLog" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../res/WAZELOG.png" />
                            </image>

@@ -50,7 +50,7 @@ public class FactoryWazeLog {
 		messageImage.setFitWidth(50);
 		messageImage.setFitHeight(50);
 		messageImage.setLayoutX(14);
-		messageImage.setLayoutY(15);
+		messageImage.setLayoutY(10);
 		
 		/*
 		 * Se crea el mensaje de dialogo que se mostrará en pantalla
