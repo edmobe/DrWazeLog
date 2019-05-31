@@ -8,7 +8,9 @@ public class FactoryUser {
 		
 	}
 
-	
+	/*
+	 * Crea una fabrica de messagePane agregando el texto acada uno de los mensajes
+	 */
 	public javafx.scene.layout.Pane cretaMessage(java.lang.String message){
 		
 		javafx.scene.layout.Pane messagePane = new javafx.scene.layout.Pane();

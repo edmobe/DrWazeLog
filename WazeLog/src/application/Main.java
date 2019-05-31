@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Main extends javafx.application.Application {
 	private javafx.stage.Stage primaryStage;
-	private javafx.scene.layout.AnchorPane mainLayout;
+	private static javafx.scene.layout.BorderPane mainLayout;
 		
 /**Método start, encargado de inicializar los hilas en javaFx**/	
 	
@@ -14,21 +14,41 @@ public class Main extends javafx.application.Application {
 	public void start(javafx.stage.Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("WazeLog");
+		showMainWindow();
 		showMainView();
 		
+		
+	}
+	private void showMainWindow() throws IOException {
+		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
+		loader.setLocation(Main.class.getResource("view/PrincipalView.fxml"));
+		mainLayout = loader.load();
+		javafx.scene.Scene scene = new javafx.scene.Scene(mainLayout);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 /*Método encargado de mostrar el menú principal, en este caso el sistema 
  de mesajería WazeLog*/
 	
-	private void showMainView() throws IOException  {
+	public static void showMainView() throws IOException  {
 		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/MessageView.fxml"));
-		mainLayout = loader.load();
-		javafx.scene.Scene scene = new javafx.scene.Scene(mainLayout);
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		javafx.scene.layout.AnchorPane mainView = loader.load();
+		mainLayout.setCenter(mainView);
 		
+	}
+	public static void showSecondView() throws IOException{
+		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
+		loader.setLocation(Main.class.getResource("view/AddGrafoView.fxml"));
+		javafx.scene.layout.AnchorPane secondView = loader.load();
+		mainLayout.setCenter(secondView);
+	}
+	public static void showThirdView() throws IOException{
+		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
+		loader.setLocation(Main.class.getResource("view/GraphWindow.fxml"));
+		javafx.scene.layout.AnchorPane thirdView = loader.load();
+		mainLayout.setCenter(thirdView);
 	}
 /*
  * Método de a JavaFx encargado de mantener las ventanas en pantalla

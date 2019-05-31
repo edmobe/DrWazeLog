@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@MessageView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MessageViewController">
+   <children>
+      <Pane prefHeight="49.0" prefWidth="800.0" style="-fx-background-color: #FF4000;" styleClass="board">
+         <children>
+            <Label layoutX="314.0" layoutY="7.0" text="Añadir al mapa" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+         </children>
+      </Pane>
+      <VBox layoutY="49.0" prefHeight="651.0" prefWidth="800.0">
+         <children>
+            <Pane prefHeight="188.0" prefWidth="800.0" style="-fx-background-color: white;">
+               <children>
+                  <TextField fx:id="textCity" layoutX="307.0" layoutY="78.0" prefHeight="31.0" prefWidth="344.0" promptText="Ingrese la ubicación actual" styleClass="message-box" stylesheets="@MessageView.css" />
+                  <Label layoutX="140.0" layoutY="83.0" text="Ubicación actual" />
+               </children>
+            </Pane>
+            <Pane prefHeight="188.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <TextField fx:id="textDestination" layoutX="307.0" layoutY="78.0" prefHeight="31.0" prefWidth="344.0" promptText="Ingrese su destino">
+                     <styleClass>
+                        <String fx:value="min-btn" />
+                        <String fx:value="message-box" />
+                     </styleClass>
+                  </TextField>
+                  <Label layoutX="140.0" layoutY="83.0" text="Destino" />
+               </children>
+            </Pane>
+            <Pane prefHeight="188.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <TextField fx:id="textDistance" layoutX="307.0" layoutY="78.0" prefHeight="31.0" prefWidth="344.0" promptText="Ingrese la distancia estimada" styleClass="message-box" />
+                  <Label layoutX="146.0" layoutY="83.0" text="Distancia estimada" />
+                  <ImageView fitHeight="49.0" fitWidth="51.0" layoutX="670.0" layoutY="69.0" onMouseClicked="#googleBoton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/google.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane prefHeight="93.0" prefWidth="800.0" style="-fx-background-color: white;" styleClass="board">
+               <children>
+                  <ImageView fitHeight="69.0" fitWidth="65.0" layoutX="215.0" layoutY="14.0" onMouseClicked="#messageWindow" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/back.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="65.0" layoutX="540.0" layoutY="14.0" onMouseClicked="#addNode" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/sendBotton.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

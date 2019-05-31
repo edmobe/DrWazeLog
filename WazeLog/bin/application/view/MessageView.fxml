@@ -50,19 +50,24 @@
          <children>
             <Pane prefHeight="205.0" styleClass="profile">
                <children>
-                  <ImageView id="messageBotton" fitHeight="50.0" fitWidth="50.0" layoutX="657.0" layoutY="23.0" onMouseClicked="#sendText" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="messageBotton" fitHeight="50.0" fitWidth="50.0" layoutX="678.0" layoutY="22.0" onMouseClicked="#sendText" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../res/iconeNVIAR.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="textBubble" accessibleRole="PARENT" layoutX="14.0" layoutY="24.0" prefHeight="46.0" prefWidth="518.0" styleClass="message-box" text="Type your message here">
+                  <TextField fx:id="textBubble" accessibleRole="PARENT" layoutX="14.0" layoutY="24.0" prefHeight="46.0" prefWidth="518.0" promptText="Ingrese el texto" styleClass="message-box">
                      <font>
                         <Font name="Calibri Light" size="14.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="583.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="559.0" layoutY="24.0" onMouseClicked="#nodeWindow" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../res/icon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="73.0" layoutX="609.0" layoutY="14.0" onMouseClicked="#graphWindow" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/map.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -94,28 +99,7 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Pane id="paneUser" layoutX="10.0" layoutY="104.0" maxHeight="100.0">
-                     <children>
-                        <VBox id="vBoxUser" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="750.0">
-                           <children>
-                              <Label id="userText" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 10px;" text="Hola WazeLog estoy en Cartago." textFill="#40b24b">
-                                 <padding>
-                                    <Insets left="5.0" right="5.0" />
-                                 </padding>
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets right="15.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets right="10.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </Pane>
+                  <Pane id="paneUser" layoutX="10.0" layoutY="104.0" maxHeight="100.0" />
                </children>
             </VBox>
          </content>
