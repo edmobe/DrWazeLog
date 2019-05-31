@@ -6,6 +6,7 @@ public class Dirrections {
 	private java.lang.String message = null;
 	private java.lang.String origin = null;
 	private java.lang.Integer change = 1;
+	private java.lang.Integer lenght = -1;
 	private java.lang.String destination = null;
 	private LinkedList<java.lang.String> interplace = new LinkedList<String>();
 
@@ -70,12 +71,17 @@ public class Dirrections {
 	 */
 	public void addInterplace(java.lang.String place) {
 		interplace.add(place);
+		lenght++;
 	}
 	/*
 	 * Regresa la lista de los lugares intermedios
 	 */
 	public LinkedList<String> getInterplace() {
 		return interplace;
+		
+	}
+	public java.lang.Integer getLenght() {
+		return lenght;
 		
 	}
 

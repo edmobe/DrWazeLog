@@ -59,7 +59,6 @@ public class ConnectionDestination {
 			Query q4 = new Query(t4);
 			
 			if(q4.hasSolution() == true) {
-				System.out.println("fff");
 				dirrections.setChange(5);
 				return "¿Para dónde se dirije?";
 		/*
@@ -68,45 +67,59 @@ public class ConnectionDestination {
 				
 			}else {
 				java.lang.String t6 = "consult('phrase_analyzer.pl')";
+				
 				Query q6 = new Query(t6);
 				System.out.println(t6+ " " + (q6.hasSolution()?"succesFinal":"fail"));
 				
+				
 				java.lang.String interplaces = "Origen: " + dirrections.getOrigin();
 				java.lang.String t5 = "mejorcamino(["+ dirrections.getOrigin()+"], ["+dirrections.getDestination()+"], P, W)";
-				Query q5 = new Query(t5);
-				java.lang.Boolean confir = true;
-				java.lang.Boolean cinfir2 = true;
-				java.lang.String temporal= null;
 				CorrectAnswer answer = new CorrectAnswer();
-				for (java.lang.String pane: dirrections.getInterplace()) {
-					if (confir) {
-						t5 = "mejorcamino(["+ dirrections.getOrigin()+"], ["+pane+"], P, W)";
-						Query q9 = new Query(t5);
-						temporal = pane;
-						interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q9.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q9.oneSolution().get("P").toString()) + "Km";
-						confir = false;
+				
+				
+				if (dirrections.getLenght() >= 0) {
+					
+					java.lang.Boolean confir = true;
+					java.lang.Boolean confir2 = true;
+					java.lang.String temporal= null;
+					
+					for (java.lang.String pane: dirrections.getInterplace()) {
+						if (confir) {
+							t5 = "mejorcamino(["+ dirrections.getOrigin()+"], ["+pane+"], P, W)";
+							Query q9 = new Query(t5);
+							interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q9.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q9.oneSolution().get("P").toString()) + "Km";
+							confir = false;
+							temporal = pane;
+						}
+						else if (confir2) {
+							t5 = "mejorcamino(["+ temporal+"], ["+pane+"], P, W)";
+							Query q10 = new Query(t5);
+							interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q10.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q10.oneSolution().get("P").toString()) + "Km";
+							confir2 = false;
+							temporal = pane;
+						}
 					}
-					else if (cinfir2) {
-						t5 = "mejorcamino(["+ temporal+"], ["+pane+"], P, W)";
-						Query q10 = new Query(t5);
-						temporal = pane;
-						interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q10.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q10.oneSolution().get("P").toString()) + "Km";
-						cinfir2 = false;
+					t5 = "mejorcamino(["+ temporal+"], ["+dirrections.getDestination()+"], P, W)";
+					Query q11 = new Query(t5);
+					interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q11.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q11.oneSolution().get("P").toString()) + "Km";
+					interplaces += "\n"+"Destino: "+ dirrections.getDestination();
+					return interplaces;
+					
+				
+					
 						
-					}
-					
-					
+				}else {
+					Query q5 = new Query(t5);
+					interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q5.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q5.oneSolution().get("P").toString()) + "Km";
+					interplaces += "\n"+"Destino: " +dirrections.getDestination();
+					return interplaces;
 				}
-				t5 = "mejorcamino(["+ temporal+"], ["+dirrections.getDestination()+"], P, W)";
-				Query q11 = new Query(t5);
-				interplaces += "\n"+ "Ruta: " + answer.correctAnswer(q11.oneSolution().get("W").toString()) + "Distancia: " + answer.correctAnswer(q11.oneSolution().get("P").toString()) + "Km";
-				interplaces += "\n"+"Destino: "+ dirrections.getDestination();
-				return interplaces;
+				
 				
 			}
 			
 		}catch (Exception e) {
-			return "No comprendí";
+			return "Error";
 		}
 	}
 

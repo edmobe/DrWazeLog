@@ -2,12 +2,8 @@ package application.view;
 
 
 import java.io.IOException;
-import java.util.StringTokenizer;
-import graphView.GraphView;
 import javafx.fxml.FXML;
-import structure.Dirrections;
-import structure.FactoryUser;
-import structure.FactoryWazeLog;
+
 
 public class MessageViewController implements javafx.fxml.Initializable {
 	
@@ -15,58 +11,103 @@ public class MessageViewController implements javafx.fxml.Initializable {
 	 * Estructuras para reconocimiento de javafx
 	 */
 	
-	public structure.Dirrections dirrections = new Dirrections();
+	public structure.Dirrections dirrections = new structure.Dirrections();
 	
 	/*
-	 * Variable par un anchorPane
+	 * Variable  anchorPane
 	 */
 	@FXML
 	private javafx.scene.layout.AnchorPane messageBotton;
 	
-	
+	/*
+	 * Variable TexField
+	 */
 	@FXML
 	private javafx.scene.control.TextField textBubble;
 	
+	/*
+	 * Variable Vbox
+	 */
+	
 	@FXML
 	private javafx.scene.layout.VBox messageVBox;
+	
+	/*
+	 * Variable ScroolPane
+	 */
 		
 	@FXML
 	private javafx.scene.control.ScrollPane scroll;
 	
+	/*
+	 * Variable anchorPane
+	 */
+	
 	@FXML
 	private javafx.scene.layout.AnchorPane graphPane;
+	
+	/*
+	 * Variable TexField
+	 */
 	
 	@FXML
 	private javafx.scene.control.TextField textCity;
 	
+	/*
+	 * Variable  TexField
+	 */
+	
 	@FXML
 	private javafx.scene.control.TextField textDestination;
 	
+	/*
+	 * Variable texField
+	 */
+	
 	@FXML
 	private javafx.scene.control.TextField textDistance;
+	
+	/*
+	 * Clase que mantiene inicializada la pantalla
+	 */
 			
 	@Override
 	public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
 		
 	}
+	/*
+	 * Muestra la ventana de nodos 
+	 */
 	
 	@FXML
 	private void nodeWindow() throws IOException {
 		application.Main.showSecondView();
 		
 	}
+	
+	/*
+	 * Muestra la venta principal cuando se encuentra en otras
+	 */
+	
 	@FXML
 	private void messageWindow() throws IOException {
 		application.Main.showMainView();
+		
+	/*
+	 * Muestra l ventana donde se pinta el grafo
+	 */
+		
 	}
 	@FXML
 	private void graphWindow() throws IOException {
 		application.Main.showThirdView();
-		GraphView graphView = new GraphView();
+		graphView.GraphView graphView = new graphView.GraphView();
 		graphView.createGraphView(graphPane);
 	}
 	
-	
+	/*
+	 * Método encargado del texto de la ventana
+	 */
 		
 	@FXML
 	private void sendText() {
@@ -76,15 +117,15 @@ public class MessageViewController implements javafx.fxml.Initializable {
 	       }
 	       else {
 	    	   
-	    	   structure.FactoryUser newMessageUser = new FactoryUser();
-	    	   structure.FactoryWazeLog newMessageWazeLog = new FactoryWazeLog();
+	    	   /*
+	    	    * Crea los textos correspondientes al usuario y WazeLog
+	    	    */
+	    	   structure.FactoryUser newMessageUser = new structure.FactoryUser();
+	    	   structure.FactoryWazeLog newMessageWazeLog = new structure.FactoryWazeLog();
 	    	   messageVBox.getChildren().addAll(newMessageUser.cretaMessage(textBubble.getText().trim()));
-	    	   
-	    	   System.out.println(textBubble.getText().trim());
-	    	   
-	    	   String sTiempo = textBubble.getText().trim().toLowerCase();
-	    	   StringTokenizer st = new StringTokenizer(sTiempo," ");
-	    	   String phrase = "[";
+	    	   java.lang.String sTiempo = textBubble.getText().trim().toLowerCase();
+	    	   java.util.StringTokenizer st = new java.util.StringTokenizer(sTiempo," ");
+	    	   java.lang.String phrase = "[";
 	    	   while (st.hasMoreTokens()) {
 	    		   phrase += st.nextToken();
 	    		   if (st.hasMoreTokens() == true) {
@@ -92,14 +133,16 @@ public class MessageViewController implements javafx.fxml.Initializable {
 	    		   }
 	    	   }
 	    	   phrase += "]";
-	    	   System.out.println(phrase);
 	    	   messageVBox.getChildren().addAll(newMessageWazeLog.cretaMessage(phrase, dirrections)); 
 		       textBubble.setText("");
 		       textBubble.requestFocus(); 
 		       
 	       }
 	       
-		 
+	/*
+	 * Se encarga de añadir un nodo a la base de datos
+	 * comprobando de los cuadrso de texto no esten vacios 
+	 */
     }
 	@FXML
 	private void addNode() throws IOException {
@@ -121,7 +164,6 @@ public class MessageViewController implements javafx.fxml.Initializable {
 			connection.Archivo archivo = new connection.Archivo();
 			java.lang.Double temporal = Double.parseDouble(textDistance.getText());
 			java.lang.Integer distance = (int) Math.round (temporal);
-			System.out.println(distance);
 			archivo.añadir(textCity.getText().trim(), textDestination.getText().trim(), distance, "id-de-siquirres", "id-de-desampa-pra-pra");
 			System.out.println("correcto");
 			messageWindow();
@@ -142,7 +184,7 @@ public class MessageViewController implements javafx.fxml.Initializable {
 		apiGoogle.GoogleMapsAPIRequest request = new apiGoogle.GoogleMapsAPIRequest();
 		try {
 			//Ingresa a la clase GoogleMapsAPIRequest para consultar la distancia y los agrega en un Array
-			String[] respuesta = request.busca_ruta(textCity.getText().trim(), textDestination.getText().trim());
+			java.lang.String[] respuesta = request.busca_ruta(textCity.getText().trim(), textDestination.getText().trim());
 			if(respuesta.length != 0) {
 				System.out.println("Nombre Google Origen: " + respuesta[0]);
 		    	System.out.println("Nombre Google Destino: " + respuesta[1]);

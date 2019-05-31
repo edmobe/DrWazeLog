@@ -13,23 +13,23 @@ public class Archivo {
 
     //lista que nos permite guardar los hechos ya existentes en la base de datos para no borrar ningun hecho al escribir uno nuevo
     LinkedList<String> hechos = new LinkedList<String>();
-    String path = "BD2.pl";    
+    java.lang.String path = "BD2.pl";    
 
     //metodo que nos permite leer el archivo .pl en donde se encuentra nuestra base de datos 
     //no recibe nada 
     //devuelve la lista de hechos con todos los hechos del archivo .pl
     public void leerArchivo() throws IOException {
         //se crea una variable que nos permite leer el archivo deseado
-        BufferedReader lector = new BufferedReader(new FileReader(path));
+        java.io.BufferedReader lector = new BufferedReader(new FileReader(path));
 
         // mientras existan datos en el documento este aÃ±adirÃ¡ los hechos uno por uno a la lista
         while (true) {
-            String linea_en_texto = lector.readLine();
+            java.lang.String linea_en_texto = lector.readLine();
             if (linea_en_texto == null) {
                 break;
             }
-            String[] parts = linea_en_texto.split("\n");
-            for (String elem : parts) {
+            java.lang.String[] parts = linea_en_texto.split("\n");
+            for (java.lang.String elem : parts) {
                 System.out.println(elem);
                 hechos.add(elem);
             }
@@ -50,8 +50,8 @@ public class Archivo {
         borrar.close();
         
         //por cada elemento en la lista de hechos, se va escribiendo en el archivo
-        BufferedWriter escribir = new BufferedWriter(new FileWriter(path, true));
-        for (String elem : hechos) {
+        java.io.BufferedWriter escribir = new BufferedWriter(new FileWriter(path, true));
+        for (java.lang.String elem : hechos) {
             escribir.write(elem);
             escribir.newLine();
         }
@@ -63,8 +63,8 @@ public class Archivo {
     //recibe: el hecho a comparar
     //retorna: -false: si no exite uno igual
     //         -true: si es una copia
-    public boolean verificar(String hecho) {
-        for (String copiaHecho : hechos) {
+    public boolean verificar(java.lang.String hecho) {
+        for (java.lang.String copiaHecho : hechos) {
             if (hecho.equals(copiaHecho))
                 return true;
         }
@@ -74,14 +74,14 @@ public class Archivo {
     
     //metodo para anadir un nuevo hechos a la base de datos 
     //rebibe: punto de inicio, punto de destino, costo de llegar
-    public void añadir(String inicio, String destino, java.lang.Integer costo, String id1, String id2) throws IOException {
+    public void añadir(java.lang.String inicio, java.lang.String destino, java.lang.Integer costo, java.lang.String id1, String id2) throws IOException {
         //lee el archivo
         leerArchivo();
         CorrectNode correctNode = new CorrectNode();
-        inicio = correctNode.correctAnswer(inicio);
-        destino = correctNode.correctAnswer(destino);
+        inicio = correctNode.correctAnswer2(inicio);
+        destino = correctNode.correctAnswer2(destino);
         //crea el nuevo lugar segun la estructura deseada para el archivo .pl
-        String nuevoLugar = "camino" + " --> " + "[[" + inicio + "], [" + destino + "], " + costo + ", [\"" + id1 + "\"], [\"" + id2 + "\"]].";
+        java.lang.String nuevoLugar = "camino" + " --> " + "[[" + inicio + "], [" + destino + "], " + costo + ", [\"" + id1 + "\"], [\"" + id2 + "\"]].";
         //verifica que no exita en nuetra base de datos
         boolean exists = verificar(nuevoLugar);
         if (exists)

@@ -16,5 +16,11 @@ public class CorrectNode {
 		return message;
 		
 	}
-
+	/*
+	 * Corrige si existe un nodo con coma de más
+	 */
+	public String correctAnswer2(String message){
+		message = message.replace(" ", ",");
+		return message;
+	}
 }

@@ -19,6 +19,9 @@ public class Main extends javafx.application.Application {
 		
 		
 	}
+	/*
+	 * Pone en pantalla la ventana principal donde se conversa con el WazeLog
+	 */
 	private void showMainWindow() throws IOException {
 		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/PrincipalView.fxml"));
@@ -38,12 +41,18 @@ public class Main extends javafx.application.Application {
 		mainLayout.setCenter(mainView);
 		
 	}
+	/*
+	 * Muestra la ventana desde donde se agregan los nodos
+	 */
 	public static void showSecondView() throws IOException{
 		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/AddGrafoView.fxml"));
 		javafx.scene.layout.AnchorPane secondView = loader.load();
 		mainLayout.setCenter(secondView);
 	}
+	/*
+	 * Muestra la ventana donde se dibujan los nodos
+	 */
 	public static void showThirdView() throws IOException{
 		javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/GraphWindow.fxml"));
